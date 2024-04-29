@@ -131,6 +131,7 @@ class HBNBCommand(cmd.Cmd):
         # Extract key-value pairs from parameters
         kwargs = {}
         for param in params:
+            print(param)
             try:
                 key, value = param.split("=")
                 # Handle string value with potential quotes and spaces
@@ -147,10 +148,11 @@ class HBNBCommand(cmd.Cmd):
             except ValueError:
                 print(f"** Invalid parameter format: {param} **")
                 continue  # Skip invalid parameter
-
+            print(f"key is {key} value is {value}")
             kwargs[key] = value
 
         # Create new instance with extracted parameters
+        print(kwargs)
         new_instance = HBNBCommand.classes[class_name](**kwargs)
         storage.save()
         print(new_instance.id)
