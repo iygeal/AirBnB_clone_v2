@@ -114,45 +114,46 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
-        """Create a new object with given parameters"""
-        args = arg.split()
-        if not args:
+        """ Create an object with given parameters """
+        if not arg:
             print("** class name missing **")
             return
+
+        args = arg.split()
 
         class_name = args[0]
         if class_name not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
 
-        # Extract parameters from argument string
         params = {}
-        for item in args[1:]:
-            if "=" in item:
-                key, value = item.split("=")
-                # Remove double quotes from value and replace underscores with spaces
-                value = value.strip("\"").replace("_", " ")
-                # Convert value to float or int if applicable
-                if "." in value:
+        for param in args[1:]:
+            if '=' in param:
+                key, value = param.split('=')
+                # Convert value to appropriate data type
+                if value.startswith('"') and value.endswith('"'):
+                    value = value[1:-1]  # Remove double quotes
+                    # Replace underscores with spaces
+                    value = value.replace('_', ' ')
+                elif '.' in value:
                     try:
                         value = float(value)
                     except ValueError:
-                        pass  # Not a valid float, keep as string
+                        continue  # Skip invalid float values
                 else:
                     try:
                         value = int(value)
                     except ValueError:
-                        pass  # Not a valid integer, keep as string
+                        continue  # Skip invalid integer values
                 params[key] = value
 
-        # Instantiate the object with the given parameters
+        # Create object with specified parameters
         try:
-            new_instance = HBNBCommand.classes[class_name](**params)
-            new_instance.save()
-            print(new_instance.id)
+            obj = HBNBCommand.classes[class_name](**params)
+            obj.save()
+            print(obj.id)
         except Exception as e:
-            print("** {}".format(e))
-
+            print("** failed to create object:", e)
 
     def help_create(self):
         """ Help information for the create method """
