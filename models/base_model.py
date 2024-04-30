@@ -12,7 +12,6 @@ class BaseModel:
 
         # Check if kwargs is not empty
         if kwargs:
-            print(f"printing kwargs from BM init {kwargs}")
             if "__class__" in kwargs.keys():
                 del kwargs["__class__"]
                 # Convert isoformat strings back to datetime objects
@@ -35,11 +34,11 @@ class BaseModel:
                     setattr(self, key, value)
         else:
             # If kwargs is empty, create new attributes
-            import models
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            models.storage.new(self)
+        import models
+        models.storage.new(self)
 
     def __str__(self):
         """Returns a string representation of the instance"""

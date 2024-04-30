@@ -3,7 +3,7 @@
 import cmd
 import sys
 from models.base_model import BaseModel
-from models.__init__ import storage
+from models import storage
 from models.user import User
 from models.place import Place
 from models.state import State
@@ -42,7 +42,6 @@ class HBNBCommand(cmd.Cmd):
         (Brackets denote optional fields in usage example.)
         """
 
-        print("Starting point")
         _cmd = _cls = _id = _args = ''  # initialize line elements
 
         # scan for general formating - i.e '.', '(', ')'
@@ -142,7 +141,7 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     # Try converting to float if it contains a dot
                     try:
-                        value = float(value)
+                        value = float(value)  #To Be refactored
                     except ValueError:
                         # Otherwise, treat as integer
                         pass
@@ -154,7 +153,7 @@ class HBNBCommand(cmd.Cmd):
         # Create new instance with extracted parameters
         #print(HBNBCommand.classes[class_name])
         new_instance = HBNBCommand.classes[class_name](**kwargs)
-        print(f"This is a new instance of {class_name} : {new_instance}")
+        print(new_instance.id)
         storage.save()
 
     def help_create(self):
