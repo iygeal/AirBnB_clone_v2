@@ -139,14 +139,11 @@ class HBNBCommand(cmd.Cmd):
                     # Unescape quotes, replace _ with spaces
                     value = value[1:-1].replace("\\_", " ")
                 else:
-                    # Try converting to float if it contains a dot
-                    try:
-                        value = float(value)  #To Be refactored
-                    except ValueError:
-                        # Otherwise, treat as integer
-                        pass
+                    if "." in value:
+                        value = float(value)
+                    else:
+                        value = int(value)           
             except ValueError:
-                print(f"** Invalid parameter format: {param} **")
                 continue  # Skip invalid parameter
             kwargs[key] = value
 
