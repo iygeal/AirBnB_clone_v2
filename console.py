@@ -41,6 +41,8 @@ class HBNBCommand(cmd.Cmd):
         Usage: <class name>.<command>([<id> [<*args> or <**kwargs>]])
         (Brackets denote optional fields in usage example.)
         """
+
+        print("Starting point")
         _cmd = _cls = _id = _args = ''  # initialize line elements
 
         # scan for general formating - i.e '.', '(', ')'
@@ -131,7 +133,6 @@ class HBNBCommand(cmd.Cmd):
         # Extract key-value pairs from parameters
         kwargs = {}
         for param in params:
-            print(param)
             try:
                 key, value = param.split("=")
                 # Handle string value with potential quotes and spaces
@@ -148,14 +149,13 @@ class HBNBCommand(cmd.Cmd):
             except ValueError:
                 print(f"** Invalid parameter format: {param} **")
                 continue  # Skip invalid parameter
-            print(f"key is {key} value is {value}")
             kwargs[key] = value
 
         # Create new instance with extracted parameters
-        print(kwargs)
+        #print(HBNBCommand.classes[class_name])
         new_instance = HBNBCommand.classes[class_name](**kwargs)
+        print(f"This is a new instance of {class_name} : {new_instance}")
         storage.save()
-        print(new_instance.id)
 
     def help_create(self):
         """ Help information for the create method """
