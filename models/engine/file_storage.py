@@ -13,7 +13,7 @@ class FileStorage:
         if cls:
             obj_dict = {}
             for key, val in FileStorage.__objects.items():
-                if key.split('.')[0] == cls:
+                if isinstance(val, cls):
                     obj_dict[key] = val
             return obj_dict
         return FileStorage.__objects
