@@ -31,11 +31,10 @@ class BaseModel:
 
                 # Set other keys to their appropriate values
             for key, value in kwargs.items():
-                if not hasattr(self, key):
-                    setattr(self, key, value)
+                setattr(self, key, value)
 
             # Update object with the new parameters
-            self.__dict__.update(kwargs)
+            #self.__dict__.update(kwargs)
 
         else:
             # If kwargs is empty, create new attributes

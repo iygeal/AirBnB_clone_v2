@@ -137,7 +137,7 @@ class HBNBCommand(cmd.Cmd):
                 # Handle string value with potential quotes and spaces
                 if value.startswith('"') and value.endswith('"'):
                     # Unescape quotes, replace _ with spaces
-                    value = value[1:-1].replace("\\_", " ")
+                    value = value[1:-1].replace("_", " ")
                 else:
                     if "." in value:
                         value = float(value)
