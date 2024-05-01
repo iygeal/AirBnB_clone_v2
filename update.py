@@ -1,16 +1,14 @@
 #!/usr/bin/python3
 
-def foo(**kwargs):
-    print(kwargs)
+class Base:
+    def __init__(self, *args, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
 
-dict = {
-    'name': "Charis",
-    'age': 26,
-    'adict': {'col': "brown"}
-}
+class Sub(Base):
+    sub = ""
 
-foo(**dict)
+dict = {'name': "Charis", 'colour': "Brown", 'sub': "Subclass"}
+obj = Sub(**dict)
 
-strn = "This is a string"
-first, *lis = strn.split()
-print(lis)
+print(obj.sub)
