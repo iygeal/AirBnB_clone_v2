@@ -142,7 +142,7 @@ class HBNBCommand(cmd.Cmd):
                     if "." in value:
                         value = float(value)
                     else:
-                        value = int(value)           
+                        value = int(value)
             except ValueError:
                 continue  # Skip invalid parameter
             kwargs[key] = value
