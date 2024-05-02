@@ -67,7 +67,8 @@ class BaseModel:
 
     def to_dict(self):
         """Convert instance into dict format"""
-        # Initialize an empty dictionary to hold the converted instance attributes
+        # Initialize an empty dictionary to hold the converted instance
+        # attributes
         dictionary = {}
 
         # Copy all instance attributes to the dictionary
@@ -78,11 +79,13 @@ class BaseModel:
             # If the key exists, remove it from the dictionary
             del dictionary['_sa_instance_state']
 
-        # Add the '__class__' key to the dictionary with the class name as its value
+        # Add the '__class__' key to the dictionary
+        # with the class name as its value
         dictionary.update({'__class__':
                            (str(type(self)).split('.')[-1]).split('\'')[0]})
 
-        # Convert 'created_at' and 'updated_at' attributes to ISO format strings and add them to the dictionary
+        # Convert 'created_at' and 'updated_at' attributes
+        # to ISO format strings and add them to the dictionary
         dictionary['created_at'] = self.created_at.isoformat()
         dictionary['updated_at'] = self.updated_at.isoformat()
 
