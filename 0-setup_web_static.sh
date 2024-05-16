@@ -13,7 +13,7 @@ sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
 
 # Create a fake HTML file for testing
-sudo echo "<html><head><title>Test Page</title></head><body><h1>Iygeal, testing page...</h1></body></html>" | sudo tee /data/web_static/releases/test/index.html
+sudo echo "<html><head><title>Test Page</title></head><body><h1>Holberton School</h1></body></html>" | sudo tee /data/web_static/releases/test/index.html
 
 # Remove symbolic link if exists and create a new one
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
