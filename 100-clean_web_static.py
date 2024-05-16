@@ -1,7 +1,8 @@
-from typing import List
-from fabric.api import lcd, local, cd, run
 #!/usr/bin/python3
 """Fabric script based on task 3"""
+
+from typing import List
+from fabric.api import lcd, local, cd, run
 
 import os
 from fabric.api import *
