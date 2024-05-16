@@ -3,7 +3,7 @@
 Fabric script for deploying an archive to web servers
 """
 
-from fabric.api import *
+from fabric.api import run, env, put
 import os
 
 # Server IPs
