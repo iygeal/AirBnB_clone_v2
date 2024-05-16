@@ -20,15 +20,19 @@ releases_path = '/data/web_static/releases'
 
 def do_pack():
     """
-    Creates a .tgz archive from the contents of the web_static folder
+    Generates a .tgz archive from the contents of the web_static folder.
+    Returns:
+        Archive path if successful, None otherwise.
     """
-    now = datetime.now().strftime("%Y%m%d%H%M%S")
-    archive_path = f"versions/web_static_{now}.tgz"
-    local("mkdir -p versions")
-    result = local(f"tar -czvf {archive_path} web_static")
-    if result.failed:
+    try:
+        local("mkdir -p versions")
+        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        archive_path = "versions/web_static_{}.tgz".format(timestamp)
+        local("tar -cvzf {} web_static".format(archive_path))
+        return archive_path
+    except Exception as e:
+        print("Error packing: {}".format(e))
         return None
-    return archive_path
 
 
 def do_deploy(archive_path):
