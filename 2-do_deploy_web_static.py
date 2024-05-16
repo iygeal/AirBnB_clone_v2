@@ -5,6 +5,8 @@ import os
 from fabric.api import env, put, run
 
 env.hosts = ['100.26.216.116', '3.84.161.102']
+env.user = 'ubuntu'
+env.key_filename = '~/.ssh/alx_rsa'
 
 
 def do_deploy(archive_path):
