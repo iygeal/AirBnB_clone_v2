@@ -5,9 +5,11 @@ from flask import Flask
 
 
 app = Flask(__name__)
-@app.route('/', strict_slahses=False)
-def hello_hbnb():
-    """"Method that displays greeting"""
+
+
+@app.route('/', strict_slashes=False)
+def hello():
+    """Method that displays greeting"""
     return "Hello HBNB!"
 
 
