@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-"""The BaseModel class implementation"""'
+"""The BaseModel class implementation"""
 
 from datetime import datetime
 import uuid
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, DateTime
+import models
 
 Base = declarative_base()
 
